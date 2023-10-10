@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-chat-bar',
   templateUrl: './chat-bar.component.html',
   styleUrls: ['./chat-bar.component.css']
 })
-export class ChatBarComponent {
-
+export class ChatBarComponent implements OnInit{
+  constructor() {}
+  myVariable:string = "";
+  
+  ngOnInit() {
+    
+  }
 }
