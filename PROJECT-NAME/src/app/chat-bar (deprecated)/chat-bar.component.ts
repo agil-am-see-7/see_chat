@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-chat-bar',
+  selector: 'app-chat-bar (deprecated)',
   templateUrl: './chat-bar.component.html',
   styleUrls: ['./chat-bar.component.css']
 })
@@ -15,7 +15,7 @@ export class ChatBarComponent implements OnInit{
 
   countCharacters() {
     this.characterCount = this.myVariable.length;
-    
+
 /*     if (this.characterCount === 120) {
       this.myVariable += '\n';
     } */
@@ -33,6 +33,6 @@ export class ChatBarComponent implements OnInit{
     return text.replace(/\n/g, '<br>');
   }
   ngOnInit() {
-    
+
   }
 }

@@ -1,6 +1,46 @@
-<div>
-    <div class="container">
-        <h1>content</h1>
-        <app-chat-bar></app-chat-bar>
-    </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-4"><H1>Content</H1></div>
+          <div class="col-4"></div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <p class="col-10" [innerHTML]="convertNewlinesToBr(myVariable)" style="height: 500px">{{myVariable}}</p>
+          </div>
+          <div class="col-2"></div>
+        </div>
+        <div class="row align-bottom">
+          <div class="col-2"></div>
+          <div class="col-8" >
+            <textarea style="height: 10px" (input)="countCharacters()" maxlength="200" (keydown.enter)="onEnterPressed($event)" class="form-control" type="text" name="radiodemo" [value]="" [(ngModel)]="myVariable"></textarea>
+
+          </div>
+          <div class="col-2">
+            <button type="submit" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="!myVariable">Submit</button>
+           <p>Character Count: {{ characterCount }}</p>
+
+        </div>
+
+
+        </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Knopf gedrückt!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clearMyVariable()"></button>
+              </div>
+              <div class="modal-body">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" [innerHTML]="convertNewlinesToBr(myVariable)">{{myVariable}}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!--<app-chat-bar (deprecated)></app-chat-bar (deprecated)>-->
 </div>

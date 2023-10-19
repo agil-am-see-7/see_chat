@@ -3,10 +3,10 @@
   <div class="container">
     <div class="row justify-content-center">
         <p class="col-10" [innerHTML]="convertNewlinesToBr(myVariable)">{{myVariable}}</p>
-        <label class="col-8"> 
-        <textarea (input)="countCharacters()" maxlength="200" (keydown.enter)="onEnterPressed($event)" class="form-control" type="text" name="radiodemo" [value]="" [(ngModel)]="myVariable"></textarea>
-        </label>
-        <button type="submit" class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="!myVariable">Submit</button>
+        <label class="col-8">
+      <textarea (input)="countCharacters()" maxlength="200" (keydown.enter)="onEnterPressed($event)" class="form-control" type="text" name="radiodemo" [value]="" [(ngModel)]="myVariable"></textarea>
+    </label>
+      <button type="submit" class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="!myVariable">Submit</button>
     </div>
     <p>Character Count: {{ characterCount }}</p>
   </div>
