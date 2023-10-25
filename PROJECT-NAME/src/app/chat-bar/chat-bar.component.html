@@ -2,12 +2,11 @@
   <!-- Chat-Bar -->
   <div class="container">
     <div class="row justify-content-center">
-        <p class="col-10">In der Chatbar componente: {{chatMessage}}</p>
         <label class="col-8"> 
-        <textarea (input)="countCharacters()" maxlength="200"  class="form-control" type="text" [value]="" [(ngModel)]="chatMessage"></textarea>
+          <textarea (input)="countCharacters()" maxlength="200"  class="form-control" type="text"  [(ngModel)]="chatMessage"></textarea>
         </label>
-        <button type="submit" class="col-2 btn btn-primary" [disabled]="!chatMessage">Submit</button>
-        <p class="col-10">Character Count: {{ characterCount }}</p>
+        <button type="submit" class="col-2 btn btn-primary" (click)="onPress()" [disabled]="!chatMessage">Submit</button>
+        <p class="col-6">Character Count: {{ characterCount }}</p>
     </div>
   </div>
 </div>
