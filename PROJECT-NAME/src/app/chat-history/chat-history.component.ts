@@ -6,8 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./chat-history.component.css']
 })
 export class ChatHistoryComponent {
-  @Input()
-  set chatMessage(value:string){
-    this.chatMessage = value;
-  }
+
 }

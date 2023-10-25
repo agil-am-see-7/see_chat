@@ -6,9 +6,6 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./chat-bar.component.css']
 })
 export class ChatBarComponent {
-
-  constructor() {}
-  
   message: string = "";
 
   get chatMessage(): string{
