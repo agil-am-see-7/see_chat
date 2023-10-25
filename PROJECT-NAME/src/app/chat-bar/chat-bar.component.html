@@ -1,28 +1,13 @@
-<div class="p-3">
+<div class="container p-3 bg-danger">
   <!-- Chat-Bar -->
   <div class="container">
     <div class="row justify-content-center">
-        <p class="col-10" [innerHTML]="convertNewlinesToBr(myVariable)">{{myVariable}}</p>
+        <p class="col-10">In der Chatbar componente: {{chatMessage}}</p>
         <label class="col-8"> 
-        <textarea (input)="countCharacters()" maxlength="200" (keydown.enter)="onEnterPressed($event)" class="form-control" type="text" name="radiodemo" [value]="" [(ngModel)]="myVariable"></textarea>
+        <textarea (input)="countCharacters()" maxlength="200"  class="form-control" type="text" [value]="" [(ngModel)]="chatMessage"></textarea>
         </label>
-        <button type="submit" class="col-2 btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" [disabled]="!myVariable">Submit</button>
-    </div>
-    <p>Character Count: {{ characterCount }}</p>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Knopf gedrückt!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="clearMyVariable()"></button>
-        </div>
-        <div class="modal-body">
-          <h1 class="modal-title fs-5" id="exampleModalLabel" [innerHTML]="convertNewlinesToBr(myVariable)">{{myVariable}}</h1>
-        </div>
-      </div>
+        <button type="submit" class="col-2 btn btn-primary" [disabled]="!chatMessage">Submit</button>
+        <p class="col-10">Character Count: {{ characterCount }}</p>
     </div>
   </div>
 </div>

@@ -1,3 +1,10 @@
-<app-header></app-header>
-<app-content></app-content>
-<app-footer></app-footer>
+<div class="bg-primary">
+    <app-header></app-header>
+    <div class="container bg-success">
+        <h1>content</h1>
+        <app-chat-history></app-chat-history>
+        <app-chat-bar [(chatMessage)]="messageText" (chatMessageChange)="chatMsg($event)"></app-chat-bar>
+        <h4>in der content component {{messageText.toLowerCase()}}</h4>
+    </div>
+    <app-footer></app-footer>
+</div>

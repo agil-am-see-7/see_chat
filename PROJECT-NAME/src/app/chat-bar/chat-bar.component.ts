@@ -1,38 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-chat-bar',
   templateUrl: './chat-bar.component.html',
   styleUrls: ['./chat-bar.component.css']
 })
-export class ChatBarComponent implements OnInit{
-  myVariable:string = "";
+export class ChatBarComponent {
+
+  constructor() {}
+  
+  message: string = "";
+
+  get chatMessage(): string{
+    return this.message;
+  }
+
+  @Output()
+  chatMessageChange = new EventEmitter<string>();
+
+  @Input()
+  set chatMessage(value:string){
+    this.message = value;
+    this.chatMessageChange.emit(this.message);
+  }
+
   characterCount: number = 0;
 
-  clearMyVariable() {
-    this.myVariable = "";
-  }
-
   countCharacters() {
-    this.characterCount = this.myVariable.length;
-    
-/*     if (this.characterCount === 120) {
-      this.myVariable += '\n';
-    } */
-  }
-
-  onEnterPressed(event: Event): void {
-    const keyboardEvent = event as KeyboardEvent; // Cast the event to KeyboardEvent
-    if (keyboardEvent.key === 'Enter') {
-      event.preventDefault(); // Prevent the default behavior (new line in textarea)
-      this.myVariable += '\n'; // Add a new line character to the text
-      this.characterCount = 0;
-    }
-  }
-  convertNewlinesToBr(text: string): string {
-    return text.replace(/\n/g, '<br>');
-  }
-  ngOnInit() {
-    
+    this.characterCount = this.message.length;
   }
 }

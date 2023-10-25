@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PROJECT-NAME';
+  public messageText: string = "...";
+
+  public chatMsg(event: any):void{
+    console.log(<string>event.toUpperCase());
+  }
 }
