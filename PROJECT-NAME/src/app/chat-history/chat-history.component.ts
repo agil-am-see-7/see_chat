@@ -33,18 +33,17 @@ function newCard() {
   const myrow = document.getElementById(`myrow`);
   const mycol = document.createElement(`div`);
   mycol.className = `col-12 p-2`;
-  mycol.id = `mycol${1}`;
+  
   myrow!.appendChild(mycol);
   
   const mycard = document.createElement(`div`);
   mycard.className = `card bg-body-tertiary`;
-  mycard.id = `mycard${1}`;
+
   mycol.appendChild(mycard);
 
   const mycardbody = document.createElement(`div`);
   mycardbody.className = `card-body`;
-  mycardbody.id = `mycardbody-${1}`;
   mycard.appendChild(mycardbody);
 
-  mycardbody.innerHTML += `<h3 class="card-title">${chattext}</h3>`;
+  mycardbody.innerHTML += `<p class="m-0">${chattext}</p>`;
 }
