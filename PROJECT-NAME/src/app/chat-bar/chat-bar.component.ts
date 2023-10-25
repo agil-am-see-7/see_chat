@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter} from '@angular/core';
 })
 export class ChatBarComponent {
   message: string = "";
+  characterCount: number = 0;
 
   get chatMessage(): string{
     return this.message;
@@ -20,8 +21,6 @@ export class ChatBarComponent {
     this.message = value;
     this.chatMessageChange.emit(this.message);
   }
-
-  characterCount: number = 0;
 
   countCharacters() {
     this.characterCount = this.message.length;

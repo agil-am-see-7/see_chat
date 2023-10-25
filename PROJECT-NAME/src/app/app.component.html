@@ -2,9 +2,9 @@
     <app-header></app-header>
     <div class="container bg-success">
         <h1>content</h1>
-        <app-chat-history></app-chat-history>
-        <app-chat-bar [(chatMessage)]="messageText" (chatMessageChange)="chatMsg($event)"></app-chat-bar>
-        <h4>in der content component {{messageText.toLowerCase()}}</h4>
+        <app-chat-history [(chatMessage)]="appText"></app-chat-history>
+        <app-chat-bar [(chatMessage)]="appText" ></app-chat-bar>
+        <h4>in der content component {{appText}}</h4>
     </div>
     <app-footer></app-footer>
 </div>

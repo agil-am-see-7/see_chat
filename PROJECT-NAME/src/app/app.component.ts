@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PROJECT-NAME';
-  public messageText: string = "...";
+  appText: string="";
 
-  public chatMsg(event: any):void{
-    console.log(<string>event.toUpperCase());
+  get chatMessage(): string{
+    return this.appText;
+  }
+
+  @Output()
+  chatMessageChange = new EventEmitter<string>();
+
+  @Input()
+  set chatMessage(value:string){
+    this.appText = value;
+    this.chatMessageChange.emit(this.appText);
   }
 }

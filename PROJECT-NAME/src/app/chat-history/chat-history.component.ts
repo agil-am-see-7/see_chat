@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-chat-history',
@@ -7,4 +7,18 @@ import { Component, Input } from '@angular/core';
 })
 export class ChatHistoryComponent {
 
+  appText: string="";
+
+  get chatMessage(): string{
+    return this.appText;
+  }
+
+  @Output()
+  chatMessageChange = new EventEmitter<string>();
+
+  @Input()
+  set chatMessage(value:string){
+    this.appText = value;
+    this.chatMessageChange.emit(this.appText);
+  }
 }
