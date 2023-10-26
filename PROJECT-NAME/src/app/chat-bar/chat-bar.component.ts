@@ -29,7 +29,7 @@ export class ChatBarComponent {
 
   // when Submit Button is clicked, it sends the data to the other components
   onPress(){
-    if (this.message.length != 0) {
+    if (this.message.trim() != "") {
 
       this.chatMessageChange.emit(this.message.trim());
       setTimeout(() => {
