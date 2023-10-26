@@ -27,7 +27,7 @@ export class ChatBarComponent {
     this.characterCount = this.message.length;
   }
 
-  // when Submit Button is klicked, it sends the data to the other components
+  // when Submit Button is clicked, it sends the data to the other components
   onPress(){
     this.chatMessageChange.emit(this.message);
   }
