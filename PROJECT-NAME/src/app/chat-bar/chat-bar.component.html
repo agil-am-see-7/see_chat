@@ -2,10 +2,10 @@
   <!-- Chat-Bar -->
   <div class="row justify-content-between m-2">
     <div class="col-10 card-body p-2">
-      <textarea (input)="countCharacters()" maxlength="200"  class="form-control p-2" type="text"  [(ngModel)]="chatMessage"></textarea>
+      <textarea id="textInput" (input)="countCharacters()" maxlength="200"  class="form-control p-2" type="text"  [(ngModel)]="chatMessage"></textarea>
     </div>
     <div class="col-2 card-body p-2 d-grid gap-2">
-      <button type="submit" class="btn btn-primary p-2" (click)="onPress()" [disabled]="!chatMessage">Submit</button>
+      <button id="subButton" type="submit" class="btn btn-primary p-2" (click)="onPress();onEnter()" [disabled]="!chatMessage">Submit</button>
     </div>
   </div>
   <p class="col-6">Character Count: {{ characterCount }}</p>
