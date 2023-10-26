@@ -36,10 +36,6 @@ export class ChatBarComponent {
     }, 0);
   }
 
-  onEnter(){
-
-
-  }
 
 
 }
