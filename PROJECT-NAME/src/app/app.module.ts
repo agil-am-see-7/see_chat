@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ChatBarComponent } from './chat-bar/chat-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ChatHistoryComponent } from './chat-history/chat-history.component';
+import { NickNameComponent } from './nick-name/nick-name.component';
+import {PersonService} from "./person.service"
 
 @NgModule({
   declarations: [
@@ -14,13 +16,14 @@ import { ChatHistoryComponent } from './chat-history/chat-history.component';
     HeaderComponent,
     FooterComponent,
     ChatBarComponent,
-    ChatHistoryComponent
+    ChatHistoryComponent,
+    NickNameComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

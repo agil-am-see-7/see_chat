@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { PersonService } from '../person.service';
 
 var chattext: string;
+var nickname: string;
 
 @Component({
   selector: 'app-chat-history',
@@ -24,10 +26,17 @@ export class ChatHistoryComponent {
       this.theHistory = this.theHistory.concat(" ",this.appText);
       //this.theHistory = this.theHistory.concat("\n");
       chattext = this.appText;
+      nickname = this.pService.nickname;
       newCard()
     }
   }
+
+  constructor(public pService: PersonService){
+    nickname = this.pService.nickname;
+  }
+  
 }
+
 
 function newCard() {
   const myrow = document.getElementById(`myrow`);
@@ -45,5 +54,5 @@ function newCard() {
   mycardbody.className = `card-body`;
   mycard.appendChild(mycardbody);
 
-  mycardbody.innerHTML += `<p class="m-0">${chattext}</p>`;
+  mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
 }
