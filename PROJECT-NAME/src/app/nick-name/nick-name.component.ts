@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { PersonService } from '../person.service';
 
+
+var checkname: string ="";
+
 @Component({
   selector: 'app-nick-name',
   templateUrl: './nick-name.component.html',
@@ -12,15 +15,36 @@ export class NickNameComponent {
     this.pService.nickname = this.name;
   }
 
-  name: string = ""; 
+  public name: string = ""; 
+  public a: boolean = false;
 
   @Input()
   set Nickname(value:string){
     this.name = value;
   }
+  
 
   onPress(){
     this.pService.nickname = this.name;
-    //console.log("nickname-Component " + this.pService.nickname);
+    checkname = this.name;
+    this.a = match();
+    if(this.a == true){
+      console.log("if " + this.a);
+      console.log("nice");
+      this.pService.nickname = this.name;
+    } else {
+      console.log("else " + this.a);
+      console.log("fuck")
+      this.pService.nickname = "***";
+    }
+  }
+}
+
+function match(){
+  //console.log(checkname);
+  if (checkname.length == 2){
+    return true;
+  }else{
+    return false;
   }
 }
