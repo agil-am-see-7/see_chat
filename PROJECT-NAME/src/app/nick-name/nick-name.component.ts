@@ -25,16 +25,11 @@ export class NickNameComponent {
   
 
   onPress(){
-    this.pService.nickname = this.name;
     checkname = this.name;
     this.a = match();
     if(this.a == true){
-      console.log("if " + this.a);
-      console.log("nice");
       this.pService.nickname = this.name;
     } else {
-      console.log("else " + this.a);
-      console.log("fuck")
       this.pService.nickname = "***";
     }
   }
