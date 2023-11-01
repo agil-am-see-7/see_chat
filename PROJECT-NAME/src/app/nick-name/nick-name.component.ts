@@ -21,6 +21,6 @@ export class NickNameComponent {
 
   onPress(){
     this.pService.nickname = this.name;
-    console.log("nickname-Component " + this.pService.nickname);
+    //console.log("nickname-Component " + this.pService.nickname);
   }
 }

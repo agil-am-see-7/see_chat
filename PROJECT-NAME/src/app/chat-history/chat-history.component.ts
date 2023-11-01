@@ -21,13 +21,17 @@ export class ChatHistoryComponent {
   @Input()
   set chatMessage(value:string){
     this.appText = value;
+    nickname = this.pService.nickname;
     if(this.appText === this.theHistory) {
     } else {
       this.theHistory = this.theHistory.concat(" ",this.appText);
-      //this.theHistory = this.theHistory.concat("\n");
       chattext = this.appText;
-      nickname = this.pService.nickname;
-      newCard()
+      if (nickname != "") {
+        newCard()
+      }
+      else{
+        alert("Bitte setze zuerst einen Nickname!")
+      }
     }
   }
 
@@ -54,5 +58,6 @@ function newCard() {
   mycardbody.className = `card-body`;
   mycard.appendChild(mycardbody);
 
-  mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
+  //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
+  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${chattext}</span></p>`;
 }
