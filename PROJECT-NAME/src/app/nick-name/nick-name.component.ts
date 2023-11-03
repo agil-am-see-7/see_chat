@@ -10,19 +10,19 @@ var checkname: string ="";
   styleUrls: ['./nick-name.component.css']
 })
 export class NickNameComponent {
-  
+
   constructor(public pService: PersonService){
     this.pService.nickname = this.name;
   }
 
-  public name: string = ""; 
+  public name: string = "";
   public a: boolean = false;
 
   @Input()
   set Nickname(value:string){
     this.name = value;
   }
-  
+
 
   onPress(){
     checkname = this.name;
@@ -31,7 +31,7 @@ export class NickNameComponent {
       this.pService.nickname = this.name;
     } else {
       this.pService.nickname = "";
-      alert("Enter a valid Nickname, existing out of [a-zA-Z0-9]");
+      alert("Enter a valid Nickname, existing out of only letters and numbers.");
     }
   }
 }
