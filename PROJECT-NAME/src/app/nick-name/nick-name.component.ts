@@ -31,7 +31,7 @@ export class NickNameComponent {
       this.pService.nickname = this.name;
     } else {
       this.pService.nickname = "";
-      alert("Enter a valid Nickname, existing out of only letters and numbers.");
+      alert("Bitte geben Sie einen Nicknamen an der nur aus Buchstaben und Nummern besteht");
     }
   }
 }
