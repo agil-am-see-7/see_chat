@@ -38,7 +38,7 @@ export class NickNameComponent {
 
 function match(){
   //console.log(checkname);
-  var regex = /^[a-zA-Z0-9]+$/;
+  var regex = /^[a-zA-Z0-9äöüÄÖÜß]+$/;
   if (regex.test(checkname)){
     return true;
   }else{
