@@ -30,14 +30,16 @@ export class NickNameComponent {
     if(this.a == true){
       this.pService.nickname = this.name;
     } else {
-      this.pService.nickname = "***";
+      this.pService.nickname = "";
+      alert("Enter a valid Nickname, existing out of [a-zA-Z0-9]");
     }
   }
 }
 
 function match(){
   //console.log(checkname);
-  if (checkname.length == 2){
+  var regex = /^[a-zA-Z0-9]+$/;
+  if (regex.test(checkname)){
     return true;
   }else{
     return false;
