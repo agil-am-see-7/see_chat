@@ -1,8 +1,10 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { PersonService } from '../person.service';
+import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
-var nickname: string;
+var nickname: string = "";
+var alertMsg: string = "";
 
 @Component({
   selector: 'app-chat-history',
@@ -10,6 +12,10 @@ var nickname: string;
   styleUrls: ['./chat-history.component.css']
 })
 export class ChatHistoryComponent {
+  
+  constructor(public pService: PersonService, public cService: ChatAlertService){
+    nickname = this.pService.nickname;
+  }
 
   public appText: string="";
   theHistory: string="";
@@ -27,21 +33,16 @@ export class ChatHistoryComponent {
       this.theHistory = this.theHistory.concat(" ",this.appText);
       chattext = this.appText;
       if (nickname != "") {
-        newCard()
+        newCard();
       }
       else{
         alert("Bitte setze zuerst einen Nickname!")
+        //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
+        //this.cService.MkAlert();
       }
     }
   }
-
-  constructor(public pService: PersonService){
-    nickname = this.pService.nickname;
-  }
-  
 }
-
-
 function newCard() {
   const myrow = document.getElementById(`myrow`);
   const mycol = document.createElement(`div`);
