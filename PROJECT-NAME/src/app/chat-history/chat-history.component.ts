@@ -4,7 +4,6 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
-var alertMsg: string = "";
 
 const escapedChatText = document.createElement('div');
 
@@ -29,19 +28,23 @@ export class ChatHistoryComponent {
 
   @Input()
   set chatMessage(value:string){
-    this.appText = value;
-    nickname = this.pService.nickname;
-    if(this.appText === this.theHistory) {
-    } else {
-      this.theHistory = this.theHistory.concat(" ",this.appText);
-      chattext = this.appText;
-      if (nickname != "") {
-        newCard();
-      }
-      else{
-        alert("Bitte setze zuerst einen Nickname!")
-        //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
-        //this.cService.MkAlert();
+    if (value.trim() === ""){
+    } else{
+      this.appText = value;
+      nickname = this.pService.nickname;
+      if(this.appText === this.theHistory) {
+        throw new Error('Chat message cannot be empty.');
+      } else {
+        this.theHistory = this.theHistory.concat(" ",this.appText);
+        chattext = this.appText;
+        if (nickname != "") {
+          newCard();
+        }
+        else{
+          alert("Bitte setze zuerst einen Nickname!")
+          //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
+          //this.cService.MkAlert();
+        }
       }
     }
   }
