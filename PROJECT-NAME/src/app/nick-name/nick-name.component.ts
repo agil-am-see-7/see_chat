@@ -45,7 +45,7 @@ export class NickNameComponent {
         
       } 
       if(this.Cname != this.pService.nickname){
-        this.cService.ChatAlert = "Nickname " + this.Cname + " heist nun " + this.name +" !";
+        this.cService.ChatAlert = "Nickname " + this.Cname + " heisst nun " + this.name +" !";
         this.Cname = this.pService.nickname;
         this.cService.MkAlert();
       }
