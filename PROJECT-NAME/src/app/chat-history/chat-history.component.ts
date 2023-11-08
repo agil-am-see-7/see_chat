@@ -6,6 +6,9 @@ var chattext: string;
 var nickname: string = "";
 var alertMsg: string = "";
 
+const escapedChatText = document.createElement('div');
+
+
 @Component({
   selector: 'app-chat-history',
   templateUrl: './chat-history.component.html',
@@ -60,5 +63,6 @@ function newCard() {
   mycard.appendChild(mycardbody);
 
   //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
-  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${chattext}</span></p>`;
+  escapedChatText.textContent = chattext;
+  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${escapedChatText.innerHTML}</span></p>`;
 }
