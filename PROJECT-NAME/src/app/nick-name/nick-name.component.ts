@@ -33,19 +33,19 @@ export class NickNameComponent {
 
   onPress(){
     checkname = this.name;
-    this.booleanTest = match();  
+    this.booleanTest = match();
     if(this.booleanTest == true){
 
       //this.cService.ChatAlert = "Name wurde Gesetzt";
       this.pService.nickname = this.name;
       if(this.Cname === ""){
         this.Cname = this.pService.nickname;
-        this.cService.ChatAlert = "Nickname "+ this.name + " ist dem Chat beigetreten.";
+        this.cService.ChatAlert = this.name + " ist dem Chat beigetreten.";
         this.cService.MkAlert();
-        
-      } 
+
+      }
       if(this.Cname != this.pService.nickname){
-        this.cService.ChatAlert = "Nickname " + this.Cname + " heisst nun " + this.name +" !";
+        this.cService.ChatAlert = this.Cname + " heisst nun " + this.name +" !";
         this.Cname = this.pService.nickname;
         this.cService.MkAlert();
       }
