@@ -1,8 +1,12 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { PersonService } from '../person.service';
+import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
-var nickname: string;
+var nickname: string = "";
+
+const escapedChatText = document.createElement('div');
+
 
 @Component({
   selector: 'app-chat-history',
@@ -10,6 +14,10 @@ var nickname: string;
   styleUrls: ['./chat-history.component.css']
 })
 export class ChatHistoryComponent {
+  
+  constructor(public pService: PersonService, public cService: ChatAlertService){
+    nickname = this.pService.nickname;
+  }
 
   public appText: string="";
   theHistory: string="";
@@ -20,28 +28,27 @@ export class ChatHistoryComponent {
 
   @Input()
   set chatMessage(value:string){
-    this.appText = value;
-    nickname = this.pService.nickname;
-    if(this.appText === this.theHistory) {
-    } else {
-      this.theHistory = this.theHistory.concat(" ",this.appText);
-      chattext = this.appText;
-      if (nickname != "") {
-        newCard()
-      }
-      else{
-        alert("Bitte setze zuerst einen Nickname!")
+    if (value.trim() === ""){
+    } else{
+      this.appText = value;
+      nickname = this.pService.nickname;
+      if(this.appText === this.theHistory) {
+        throw new Error('Chat message cannot be empty.');
+      } else {
+        this.theHistory = this.theHistory.concat(" ",this.appText);
+        chattext = this.appText;
+        if (nickname != "") {
+          newCard();
+        }
+        else{
+          alert("Bitte setze zuerst einen Nickname!")
+          //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
+          //this.cService.MkAlert();
+        }
       }
     }
   }
-
-  constructor(public pService: PersonService){
-    nickname = this.pService.nickname;
-  }
-  
 }
-
-
 function newCard() {
   const myrow = document.getElementById(`myrow`);
   const mycol = document.createElement(`div`);
@@ -59,5 +66,6 @@ function newCard() {
   mycard.appendChild(mycardbody);
 
   //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
-  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${chattext}</span></p>`;
+  escapedChatText.textContent = chattext;
+  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${escapedChatText.innerHTML}</span></p>`;
 }

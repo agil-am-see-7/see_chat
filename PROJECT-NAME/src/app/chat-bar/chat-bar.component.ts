@@ -34,8 +34,10 @@ export class ChatBarComponent {
       this.chatMessageChange.emit(this.message.trim());
       setTimeout(() => {
         this.chatMessage = "";
-       this.characterCount = 0;
-      }, 0);
+        this.characterCount = 0;
+        this.chatMessageChange.emit(this.chatMessage = "");
+      }, 10);
+      
     }
   }
 

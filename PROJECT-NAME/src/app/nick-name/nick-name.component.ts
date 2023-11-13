@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { PersonService } from '../person.service';
+import { ChatAlertService } from '../chat-alert.service';
 
 
 var checkname: string ="";
@@ -11,24 +12,43 @@ var checkname: string ="";
 })
 export class NickNameComponent {
 
-  constructor(public pService: PersonService){
+  constructor(public pService: PersonService, public cService: ChatAlertService){
     this.pService.nickname = this.name;
+    this.cService.ChatAlert = this.Alert;
   }
 
   public name: string = "";
-  public a: boolean = false;
+  public Cname: string = "";
+  public Alert: string = "";
+  public booleanTest: boolean = false;
 
   @Input()
   set Nickname(value:string){
     this.name = value;
   }
 
+  @Output()
+  NicknameChange = new EventEmitter<any>();
+
 
   onPress(){
     checkname = this.name;
-    this.a = match();
-    if(this.a == true){
+    this.booleanTest = match();
+    if(this.booleanTest == true){
+
+      //this.cService.ChatAlert = "Name wurde Gesetzt";
       this.pService.nickname = this.name;
+      if(this.Cname === ""){
+        this.Cname = this.pService.nickname;
+        this.cService.ChatAlert = this.name + " ist dem Chat beigetreten.";
+        this.cService.MkAlert();
+
+      }
+      if(this.Cname != this.pService.nickname){
+        this.cService.ChatAlert = this.Cname + " heisst nun " + this.name +" !";
+        this.Cname = this.pService.nickname;
+        this.cService.MkAlert();
+      }
     } else {
       this.pService.nickname = "";
       alert("Bitte geben Sie einen Nicknamen an der nur aus Buchstaben und Nummern besteht");
@@ -36,8 +56,8 @@ export class NickNameComponent {
   }
 }
 
+//Function which observes the Username of the Chatter and filters it.
 function match(){
-  //console.log(checkname);
   var regex = /^[a-zA-Z0-9äöüÄÖÜß]+$/;
   if (regex.test(checkname)){
     return true;
