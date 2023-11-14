@@ -4,7 +4,7 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
-
+var today = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString().slice(0, 5);
 const escapedChatText = document.createElement('div');
 
 
@@ -62,10 +62,14 @@ function newCard() {
   mycol.appendChild(mycard);
 
   const mycardbody = document.createElement(`div`);
-  mycardbody.className = `card-body`;
+  mycardbody.className = `card-body row p-1 `;
   mycard.appendChild(mycardbody);
 
   //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
   escapedChatText.textContent = chattext;
-  mycardbody.innerHTML += `<p class="m-0"><span class="text-primary-emphasis fs-5 fw-bolder">${nickname + ": "}</span><span>${escapedChatText.innerHTML}</span></p>`;
+  mycardbody.innerHTML += `<p class="m-0 col-12">
+  <span class="text-primary-emphasis fs-4 fw-bolder">${nickname + ": "}</span>
+  <span class="fs-5">${escapedChatText.innerHTML}</span>
+  </p>`;
+  mycardbody.innerHTML += `<p class="m-0 py-0 col-12 text-end fw-light font-monospace"><span>${today}</span></p>`;
 }
