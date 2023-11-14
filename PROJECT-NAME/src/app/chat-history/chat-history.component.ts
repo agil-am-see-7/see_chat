@@ -4,7 +4,6 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
-var today = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString().slice(0, 5);
 const escapedChatText = document.createElement('div');
 
 
@@ -50,6 +49,7 @@ export class ChatHistoryComponent {
   }
 }
 function newCard() {
+  var today = new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString().slice(0, 5);
   const myrow = document.getElementById(`myrow`);
   const mycol = document.createElement(`div`);
   mycol.className = `col-12 p-2`;
