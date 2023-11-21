@@ -33,10 +33,13 @@ export class NickNameComponent {
 
   onPress(){
     checkname = this.name;
+    //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+    const PlaceholderAlert = document.getElementById(`textInputNickname`);
     this.booleanTest = match();
     if(this.booleanTest == true){
-
-      //this.cService.ChatAlert = "Name wurde Gesetzt";
+      //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+      PlaceholderAlert?.setAttribute("class", "form-control p-2 ng-valid ng-dirty ng-touched");
+      PlaceholderAlert?.setAttribute("placeholder", "Bitte gieb einen Nicknamen ein");
       this.pService.nickname = this.name;
       if(this.Cname === ""){
         this.Cname = this.pService.nickname;
@@ -51,7 +54,9 @@ export class NickNameComponent {
       }
     } else {
       this.pService.nickname = "";
-      alert("Bitte geben Sie einen Nicknamen an der nur aus Buchstaben und Nummern besteht");
+      //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+      PlaceholderAlert?.setAttribute("class", "border-danger border-3 form-control p-2");
+      PlaceholderAlert?.setAttribute("placeholder", "Bitte geben Sie einen Nicknamen an der nur aus Buchstaben und Nummern besteht");
     }
   }
 }
