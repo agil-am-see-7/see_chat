@@ -4,6 +4,7 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
+const MAX_CHILDREN = 100;
 const escapedChatText = document.createElement('div');
 
 
@@ -38,6 +39,7 @@ export class ChatHistoryComponent {
         chattext = this.appText;
         if (nickname != "") {
           newCard();
+          removeOldestCardIfNeeded()
         }
         else{
           alert("Bitte setze zuerst einen Nickname!")
@@ -65,11 +67,29 @@ function newCard() {
   mycardbody.className = `card-body row p-1 border-0`;
   mycard.appendChild(mycardbody);
 
-  //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
   escapedChatText.textContent = chattext;
   mycardbody.innerHTML += `<p class="m-0 col-12 border-0">
   <span class="text-dark fs-4 fw-bolder">${nickname + ": "}</span>
   <span class="fs-5">${escapedChatText.innerHTML}</span>
   </p>`;
   mycardbody.innerHTML += `<p class="m-0 py-0 col-12 text-end fw-light font-monospace "><span>${today}</span></p>`;
+}
+
+function removeOldestCardIfNeeded() {
+  const myrow = document.getElementById(`myrow`);
+  
+  // Check if myrow exists and has more children than the allowed limit
+  if (myrow && myrow.childElementCount > MAX_CHILDREN) {
+    removeOldestCard();
+  }
+}
+
+function removeOldestCard() {
+  const myrow = document.getElementById(`myrow`);
+  const oldestCard = myrow?.firstChild;
+
+  // Remove the oldest card if it exists
+  if (oldestCard) {
+    myrow?.removeChild(oldestCard);
+  }
 }
