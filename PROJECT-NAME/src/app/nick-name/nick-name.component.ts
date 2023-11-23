@@ -39,7 +39,7 @@ export class NickNameComponent {
     if(this.booleanTest == true){
       //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
       PlaceholderAlert?.setAttribute("class", "form-control p-2 ng-valid ng-dirty ng-touched");
-      PlaceholderAlert?.setAttribute("placeholder", "Bitte gieb einen Nicknamen ein");
+      PlaceholderAlert?.setAttribute("placeholder", "Bitte gib einen Nicknamen ein");
       this.pService.nickname = this.name;
       if(this.Cname === ""){
         this.Cname = this.pService.nickname;
@@ -63,10 +63,13 @@ export class NickNameComponent {
 
 //Function which observes the Username of the Chatter and filters it.
 function match(){
-  var regex = /^[a-zA-Z0-9äöüÄÖÜß]+$/;
-  if (regex.test(checkname)){
-    return true;
-  }else{
+  var regex = /^[a-zA-Z0-9äöüÄÖÜß]+$/;;
+  if (/^[^a-zA-Z0-9]+$/.test(checkname)){
     return false;
   }
-}
+  if(checkname.includes(' ')){
+    return false;
+  }
+
+    return true;
+  }
