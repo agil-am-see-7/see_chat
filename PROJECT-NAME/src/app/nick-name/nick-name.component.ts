@@ -67,5 +67,4 @@ function match(){
     return false;
   }
   return !checkname.includes(' ');
-
   }
