@@ -47,7 +47,7 @@ export class ChatHistoryComponent {
         else{
           //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
           PlaceholderAlert?.setAttribute("class", "border-danger border-3 form-control p-2");
-          PlaceholderAlert?.setAttribute("placeholder", "Bitte setze zuerst einen Nickname!");    
+          PlaceholderAlert?.setAttribute("placeholder", "Bitte setze zuerst einen Nickname!");
         }
       }
     }
@@ -80,7 +80,7 @@ function newCard() {
 
 function removeOldestCardIfNeeded() {
   const myrow = document.getElementById(`myrow`);
-  
+
   // Check if myrow exists and has more children than the allowed limit
   if (myrow && myrow.childElementCount > MAX_CHILDREN) {
     removeOldestCard();
