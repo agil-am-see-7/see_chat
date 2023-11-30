@@ -28,6 +28,9 @@ export class ChatHistoryComponent {
 
   @Input()
   set chatMessage(value:string){
+    //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+    const PlaceholderAlert = document.getElementById(`textInputNickname`);
+
     if (value.trim() === ""){
     } else{
       this.appText = value;
@@ -42,9 +45,9 @@ export class ChatHistoryComponent {
           removeOldestCardIfNeeded()
         }
         else{
-          alert("Bitte setze zuerst einen Nickname!")
-          //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
-          //this.cService.MkAlert();
+          //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+          PlaceholderAlert?.setAttribute("class", "border-danger border-3 form-control p-2");
+          PlaceholderAlert?.setAttribute("placeholder", "Bitte setze zuerst einen Nickname!");
         }
       }
     }
@@ -77,7 +80,7 @@ function newCard() {
 
 function removeOldestCardIfNeeded() {
   const myrow = document.getElementById(`myrow`);
-  
+
   // Check if myrow exists and has more children than the allowed limit
   while (myrow && myrow.childElementCount > MAX_CHILDREN) {
     removeOldestCard();
