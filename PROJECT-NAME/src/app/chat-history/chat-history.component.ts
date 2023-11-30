@@ -4,7 +4,7 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
-const MAX_CHILDREN = 100;
+const MAX_CHILDREN = 3;
 const escapedChatText = document.createElement('div');
 
 
@@ -79,7 +79,7 @@ function removeOldestCardIfNeeded() {
   const myrow = document.getElementById(`myrow`);
   
   // Check if myrow exists and has more children than the allowed limit
-  if (myrow && myrow.childElementCount > MAX_CHILDREN) {
+  while (myrow && myrow.childElementCount > MAX_CHILDREN) {
     removeOldestCard();
   }
 }
