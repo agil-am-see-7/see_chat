@@ -28,9 +28,6 @@ export class ChatHistoryComponent {
 
   @Input()
   set chatMessage(value:string){
-    //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
-    const PlaceholderAlert = document.getElementById(`textInputNickname`);
-
     if (value.trim() === ""){
     } else{
       this.appText = value;
@@ -42,12 +39,13 @@ export class ChatHistoryComponent {
         chattext = this.appText;
         if (nickname != "") {
           newCard();
-          removeOldestCardIfNeeded()
+          //removeOldestCardIfNeeded()
+          this.cService.removeOldestCardIfNeeded();
         }
         else{
-          //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
-          PlaceholderAlert?.setAttribute("class", "border-danger border-3 form-control p-2");
-          PlaceholderAlert?.setAttribute("placeholder", "Bitte setze zuerst einen Nickname!");
+          alert("Bitte setze zuerst einen Nickname!")
+          //this.cService.ChatAlert = "Bitte setze zuerst einen Nickname!";
+          //this.cService.MkAlert();
         }
       }
     }
@@ -77,22 +75,4 @@ function newCard() {
   </p>`;
   mycardbody.innerHTML += `<p class="m-0 py-0 col-12 text-end fw-light font-monospace "><span>${today}</span></p>`;
 }
-
-function removeOldestCardIfNeeded() {
-  const myrow = document.getElementById(`myrow`);
-
-  // Check if myrow exists and has more children than the allowed limit
-  while (myrow && myrow.childElementCount > MAX_CHILDREN) {
-    removeOldestCard();
-  }
-}
-
-function removeOldestCard() {
-  const myrow = document.getElementById(`myrow`);
-  const oldestCard = myrow?.firstChild;
-
-  // Remove the oldest card if it exists
-  if (oldestCard) {
-    myrow?.removeChild(oldestCard);
-  }
-}
+//const intervalId = setInterval(removeOldestCardIfNeeded, 1000);

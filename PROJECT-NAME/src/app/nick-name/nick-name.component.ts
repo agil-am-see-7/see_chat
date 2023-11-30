@@ -45,12 +45,13 @@ export class NickNameComponent {
         this.Cname = this.pService.nickname;
         this.cService.ChatAlert = this.name + " ist dem Chat beigetreten.";
         this.cService.MkAlert();
-
+        this.cService.removeOldestCardIfNeeded();
       }
       if(this.Cname != this.pService.nickname){
         this.cService.ChatAlert = this.Cname + " heisst nun " + this.name +" !";
         this.Cname = this.pService.nickname;
         this.cService.MkAlert();
+        this.cService.removeOldestCardIfNeeded();
       }
     } else {
       this.pService.nickname = "";
