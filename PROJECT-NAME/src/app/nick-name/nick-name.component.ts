@@ -22,6 +22,10 @@ export class NickNameComponent {
   public Alert: string = "";
   public booleanTest: boolean = false;
 
+  get Nickname(): string{
+    return this.name;
+  }
+
   @Input()
   set Nickname(value:string){
     this.name = value;
