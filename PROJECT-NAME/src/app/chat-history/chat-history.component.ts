@@ -4,7 +4,6 @@ import { ChatAlertService } from '../chat-alert.service';
 
 var chattext: string;
 var nickname: string = "";
-const MAX_CHILDREN = 3;
 const escapedChatText = document.createElement('div');
 
 
@@ -75,4 +74,3 @@ function newCard() {
   </p>`;
   mycardbody.innerHTML += `<p class="m-0 py-0 col-12 text-end fw-light font-monospace "><span>${today}</span></p>`;
 }
-//const intervalId = setInterval(removeOldestCardIfNeeded, 1000);

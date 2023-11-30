@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const MAX_CHILDREN = 3;
+const MAX_CHILDREN = 100;
 
 @Injectable({
   providedIn: 'root'
