@@ -8,7 +8,7 @@ const MAX_CHILDREN = 100;
 export class ChatAlertService {
 
   private chatAlertMsg: string = "";
-  
+
 
   public get ChatAlert(): string {
     return this.chatAlertMsg;
@@ -39,22 +39,22 @@ export class ChatAlertService {
   public removeOldestCard() {
     const myrow = document.getElementById(`myrow`);
     const oldestCard = myrow?.firstChild;
-  
+
     // Remove the oldest card if it exists
     if (oldestCard) {
       myrow?.removeChild(oldestCard);
     }
   }
-  
+
   public removeOldestCardIfNeeded() {
     const myrow = document.getElementById(`myrow`);
-    
+
     // Check if myrow exists and has more children than the allowed limit
     while (myrow && myrow.childElementCount > MAX_CHILDREN) {
       this.removeOldestCard();
     }
   }
-  
+
 
 }
 
