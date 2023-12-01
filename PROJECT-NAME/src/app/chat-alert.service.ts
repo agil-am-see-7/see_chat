@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 
+const MAX_CHILDREN = 100;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ChatAlertService {
 
   private chatAlertMsg: string = "";
+
 
   public get ChatAlert(): string {
     return this.chatAlertMsg;
@@ -33,4 +36,26 @@ export class ChatAlertService {
     mycard.appendChild(mycardbody);
     mycardbody.innerHTML += `<p class="m-0 fw-light font-monospace text-body-secondary">${this.chatAlertMsg}</p>`;
   }
+  public removeOldestCard() {
+    const myrow = document.getElementById(`myrow`);
+    const oldestCard = myrow?.firstChild;
+
+    // Remove the oldest card if it exists
+    if (oldestCard) {
+      myrow?.removeChild(oldestCard);
+    }
+  }
+
+  public removeOldestCardIfNeeded() {
+    const myrow = document.getElementById(`myrow`);
+
+    // Check if myrow exists and has more children than the allowed limit
+    while (myrow && myrow.childElementCount > MAX_CHILDREN) {
+      this.removeOldestCard();
+    }
+  }
+
+
 }
+
+

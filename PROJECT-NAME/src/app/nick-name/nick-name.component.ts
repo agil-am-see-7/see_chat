@@ -22,6 +22,10 @@ export class NickNameComponent {
   public Alert: string = "";
   public booleanTest: boolean = false;
 
+  get Nickname(): string{
+    return this.name;
+  }
+
   @Input()
   set Nickname(value:string){
     this.name = value;
@@ -33,35 +37,39 @@ export class NickNameComponent {
 
   onPress(){
     checkname = this.name;
+    //PlaceholderAlert gibt nutzer hinweis fals etwas falsch gelaufen ist
+    const PlaceholderAlert = document.getElementById(`textInputNickname`);
     this.booleanTest = match();
-    if(this.booleanTest == true){
-
-      //this.cService.ChatAlert = "Name wurde Gesetzt";
+    if(this.booleanTest){
+      //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+      PlaceholderAlert?.setAttribute("class", "form-control p-2 ng-valid ng-dirty ng-touched");
+      PlaceholderAlert?.setAttribute("placeholder", "Bitte geben Sie einen Nicknamen ein");
       this.pService.nickname = this.name;
       if(this.Cname === ""){
         this.Cname = this.pService.nickname;
         this.cService.ChatAlert = this.name + " ist dem Chat beigetreten.";
         this.cService.MkAlert();
-
+        this.cService.removeOldestCardIfNeeded();
       }
       if(this.Cname != this.pService.nickname){
         this.cService.ChatAlert = this.Cname + " heisst nun " + this.name +" !";
         this.Cname = this.pService.nickname;
         this.cService.MkAlert();
+        this.cService.removeOldestCardIfNeeded();
       }
     } else {
       this.pService.nickname = "";
-      alert("Bitte geben Sie einen Nicknamen an der nur aus Buchstaben und Nummern besteht");
+      //PlaceholderAlert giebt nutzer hinweis fals etwas falsch gelaufen ist
+      PlaceholderAlert?.setAttribute("class", "border-danger border-3 form-control p-2");
+      PlaceholderAlert?.setAttribute("placeholder", "Nicknames dürfen nur aus Buchstaben, Zahlen und Sonderzeichen bestehen");
     }
   }
 }
 
 //Function which observes the Username of the Chatter and filters it.
 function match(){
-  var regex = /^[a-zA-Z0-9äöüÄÖÜß]+$/;
-  if (regex.test(checkname)){
-    return true;
-  }else{
+  if (/^[^a-zA-Z0-9]+$/.test(checkname)){
     return false;
   }
-}
+  return !checkname.includes(' ');
+  }

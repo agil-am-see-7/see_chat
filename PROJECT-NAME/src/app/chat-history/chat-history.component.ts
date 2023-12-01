@@ -38,6 +38,8 @@ export class ChatHistoryComponent {
         chattext = this.appText;
         if (nickname != "") {
           newCard();
+          //removeOldestCardIfNeeded()
+          this.cService.removeOldestCardIfNeeded();
         }
         else{
           alert("Bitte setze zuerst einen Nickname!")
@@ -65,7 +67,6 @@ function newCard() {
   mycardbody.className = `card-body row p-1 border-0`;
   mycard.appendChild(mycardbody);
 
-  //mycardbody.innerHTML += `<p class="m-0">${nickname + ": " + chattext}</p>`;
   escapedChatText.textContent = chattext;
   mycardbody.innerHTML += `<p class="m-0 col-12 border-0">
   <span class="text-dark fs-4 fw-bolder">${nickname + ": "}</span>
