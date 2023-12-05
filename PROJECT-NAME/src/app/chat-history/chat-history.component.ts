@@ -38,6 +38,7 @@ export class ChatHistoryComponent {
         chattext = this.appText;
         if (nickname != "") {
           newCard();
+          this.pService.Ranking();
         }
         else{
           alert("Bitte setze zuerst einen Nickname!")
