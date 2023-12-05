@@ -33,7 +33,7 @@ export class ChatBarComponent {
   }
   feuern() {
     const wortObjekt = {
-      "woerter": ["Hurensohn", "Arschgesicht", "Schnäbikätscher", "Arschkriecher", "Nutte"]
+      "woerter": ["Hurensohn", "Arschgesicht", "Schnäbikätscher", "Mongo", "Nutte", "St. Galler"]
     };
     const zufaelligesWort = wortObjekt.woerter[Math.floor(Math.random() * wortObjekt.woerter.length)];
     this.cService.newCard(this.pService.nickname + ": ","Du " + zufaelligesWort + "!");
