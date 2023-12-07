@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { ChatAlertService } from '../chat-alert.service';
 import { PersonService } from '../person.service';
+import { ChatService } from '../chat.service';
+import { Message } from '../message';
 
 @Component({
   selector: 'app-chat-bar',
@@ -11,8 +13,8 @@ export class ChatBarComponent {
   //variables
   message: string = "";
   characterCount: number = 0;
-
-  constructor(public cService: ChatAlertService, public pService: PersonService){
+  
+  constructor(public cService: ChatAlertService, public pService: PersonService,public chatService: ChatService){
   }
 
   get chatMessage(): string{
@@ -26,6 +28,14 @@ export class ChatBarComponent {
   @Input()
   set chatMessage(value:string){
     this.message = value;
+    let msgObj: Message = {message:'', nickname:'', date: new Date};
+
+    msgObj.nickname = this.pService.nickname;
+    this.chatService.addToHistory(msgObj).subscribe(
+      (response: Message) => {
+        console.log("eppis" + response);
+      }
+    )
   }
 
   countCharacters() {
@@ -42,6 +52,7 @@ export class ChatBarComponent {
   // when Submit Button is clicked, it sends the data to the other components
   onPress(){
     if (this.message.trim() != "") {
+
 
       this.chatMessageChange.emit(this.message.trim());
       setTimeout(() => {

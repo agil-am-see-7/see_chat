@@ -8,7 +8,8 @@ import { Message } from './message';
   providedIn: 'root'
 })
 export class ChatService {
-  private apiUrl = 'https://expressapiamsee.onrender.com'; // Ersetze dies durch die tatsächliche URL deiner REST API
+  //private apiUrl = 'https://expressapiamsee.onrender.com'; // Ersetze dies durch die tatsächliche URL deiner REST API
+  private apiUrl = 'http://localhost:3000/api/history'
 
   constructor(private http: HttpClient) { }
 
