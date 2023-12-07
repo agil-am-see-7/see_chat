@@ -40,6 +40,7 @@ export class ChatHistoryComponent {
           newCard();
           //removeOldestCardIfNeeded()
           this.cService.removeOldestCardIfNeeded();
+          this.pService.Ranking();
         }
         else{
           alert("Bitte setze zuerst einen Nickname!")
