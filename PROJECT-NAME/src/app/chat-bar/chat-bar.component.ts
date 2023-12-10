@@ -33,7 +33,7 @@ export class ChatBarComponent {
   }
   feuern() {
     const wortObjekt = {
-      "woerter": ["Hurensohn", "Arschgesicht", "Schnäbikätscher", "Mongo", "Nutte", "St. Galler"]
+      "woerter": ["Scherzmeister", "Lächelkönig", "Spaßvulkan", "Witze-Wizard", "Spaßvogel", "Humor-Held", "Lach-Genie", "Neckar-Ninja", "Schalk-Spezialist", "Spaßkanone", "Grinse-Guru","Lachblitz", "Freude-Feuerwerk", "Ulk-Überflieger", "Humor-Haudegen", "Spaßgranate von St. Gallen", "Lachmagnet aus dem Appenzellerland", "Ulk-Unicorn der Ostschweiz", "Frohsinnsflitzer von St. Gallen", "Humor-Hurrikan vom Bodensee", "Witze-Walzer aus dem Rheintal", "Schelm-Symphonie im Toggenburg", "Lachsalve-Liebhaber aus Wil", "Kicher-Komet über Gossau", "Grinse-Gigant aus Rorschach"]
     };
     const zufaelligesWort = wortObjekt.woerter[Math.floor(Math.random() * wortObjekt.woerter.length)];
     this.cService.newCard(this.pService.nickname + ": ","Du " + zufaelligesWort + "!");
@@ -48,7 +48,7 @@ export class ChatBarComponent {
         this.chatMessage = "";
         this.characterCount = 0;
         this.chatMessageChange.emit(this.chatMessage = "");
-      }, 10);      
+      }, 10);
     }
   }
 }
